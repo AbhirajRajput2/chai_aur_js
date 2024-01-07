@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess the number</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #212121;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 70vh;
+        width: 60vw;
+        border: 1px solid white;
+        color: white;
+        gap: 10px;
+      }
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 5px;
+      }
+      #rangee {
+        border: 1px solid rgb(238, 154, 154);
+        margin-bottom: 30px;
+      }
+      #results {
+        border: 1px solid rgb(238, 154, 154);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="head">Guess the number</h1>
+      <form action="" id="rangee">
+        <h2>Enter min and maximum range</h2>
+        <label for="min">Minimum value</label>
+        <input type="number" id="min" /><br />
+        <label for="max">Maximum value</label>
+        <input type="number" id="max" /> <br />
+        <input type="submit" id="inputs" />
+      </form>
+
+      <form action="" id="results">
+        <h2>Enter Guessed value</h2>
+        <input type="number" name="guess" id="guess" />
+        <input type="submit" id="guessed" />
+      </form>
+
+      <div class="ans">
+        <h1 id="result"></h1>
+      </div>
+    </div>
+
+    <script>
+      let button1 = document.querySelector("#inputs");
+      let button2 = document.querySelector("#guessed");
+      var random;
+      var info=document.querySelector('#result')
+      //Generating Random
+      button1.addEventListener("click", (e) => {
+        e.preventDefault();
+        let min = parseInt(document.querySelector("#min").value);
+        let  max = parseInt(document.querySelector("#max").value);
+        let result=validaterange(min,max)
+        if(result==false){
+            document.querySelector('#head').innerHTML="Enter a valid value"
+        }
+        else{
+            document.querySelector('#head').innerHTML="Random value generated"
+            random=getRandomInteger(min,max)
+            console.log(random)
+        }
+
+      });
+      function getRandomInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      //Checking input
+      button2.addEventListener('click',(e)=>{
+        e.preventDefault()
+        let guess=parseInt(document.querySelector('#guess').value);
+        if(guess===random){
+            info.style.color='red'
+            info.innerHTML="Congrats same value"
+        }
+        else if(guess<random){
+            info.innerHTML="Guess larger value"
+            
+        }
+        else{
+           info.innerHTML='Guess larger value'
+           
+        }
+        
+    })
+
+      //validate range
+      function validaterange(min,max){
+        if((min==""||max=="")||(!min||!max)){
+            return false
+        }
+        else{
+            return true
+        }
+      }
+    </script>
+  </body>
+</html>

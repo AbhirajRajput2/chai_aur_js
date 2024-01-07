@@ -1,0 +1,135 @@
+  </body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>events</title>
+    <style>
+      body {
+        height: 100vh;
+        width: 100vw;
+      }
+      .images {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="images">
+
+        <ul>
+            <li> <img
+                src="https://tse1.mm.bing.net/th?id=OIP.by5FKX22Is3pujgXfALi7AHaFj&pid=Api&rs=1&c=1&qlt=95&w=134&h=100"
+                alt="leapord"
+                width="200px"
+                height="120px"
+                id="leapord"
+              /></li>
+            <li> <img
+                src="https://tse4.mm.bing.net/th?id=OIP.XGQEfPyxjErCtNLXGF45cAHaEK&pid=Api&P=0&h=180"
+                alt="Lion"
+                width="200px"
+                height="120px"
+                id="lion"
+              /></li>
+            <li><img
+                src="https://tse3.mm.bing.net/th?id=OIP.ieb6kEBG1nS7ol3QLYdoWAHaE7&pid=Api&P=0&h=180"
+                alt="Zebra"
+                width="200px"
+                height="120px"
+                id="zebra"
+              />
+        </li>
+            <li> <img
+                src="https://tse4.mm.bing.net/th?id=OIP.4dDscWL3QFxstTqQ6Sq2QQHaLH&pid=Api&P=0&h=180"
+                alt="Elephant"
+                width="200px"
+                height="120px"
+                id="elephant"
+              /></li>
+            <li>  <img
+                src="https://live.staticflickr.com/4191/33773677213_75111b1948_b.jpg"
+                alt="girrafe"
+                width="200px"
+                height="120px"
+                id="girrafe"
+              /></li>
+
+      <a href="www.google.com" id="doogle">Google</a>
+      <li></li>
+        </ul>
+     
+
+    </div>
+
+    <script>
+      // document.querySelector('.images').addEventListener('click',()=>{
+      //     console.log("Url is clicked")
+      // })
+      // document.querySelector('#lion').addEventListener('click',()=>{
+      //     console.log("Lion is clicked");
+      // })
+
+      //Here when i click on Lion images first lion img event bubble pop then goes to parent event this is known as "Event Bubbling"
+
+      //And its opposite when first parent event bubble pop and then goes to main event this is known as "Event Capturing"
+
+      //This can be set by "true"or"false" in event listeners
+      //True:Event CApturing && False: Event bubbling || Default it is false i.e. event bubbleing
+
+      // document.querySelector('.images').addEventListener('click',()=>{
+      //     console.log("Url is clicked")
+      // },true)
+      // document.querySelector('#lion').addEventListener('click',()=>{
+      //     console.log("Lion is clicked");
+      // },true)
+
+      //Now suppose you wanna that no only triggered event will pop not further event will be activated
+      //Use "stopPropagation()"
+
+      // document.querySelector('.images').addEventListener('click',()=>{
+      //     console.log("Url is clicked")
+      // })
+      // document.querySelector('#lion').addEventListener('click',(e)=>{
+      //     e.stopPropagation();
+      //     console.log("Lion is clicked")
+      // })
+
+      //If you wanna to stop further processing of element stop "preventDefault()" eg. it will stop link processing in 'a' tag
+
+      
+    //   document.querySelector(".images").addEventListener("click", () => {
+    //       console.log("Url is clicked");
+    //     });
+        
+    //     document.querySelector("#doogle").addEventListener("click", (e) => {
+    //         e.stopPropagation();
+    //         e.preventDefault();
+    //         console.log("Google alone was clicked");
+    //     });
+        
+        
+        //Some other events are click,Onscreenx,onscreeny,altkey,keyboard event,timestamp etc
+
+
+        //Task : Whenever clike on any image it will get removed
+        
+        document.querySelector('.images').addEventListener('click',(e)=>{
+            e.preventDefault()
+            console.log(e.target.tagName)
+            if(e.target.tagName=='IMG'){
+                let removeit = e.target.parentNode
+            removeit.remove()
+            //or
+            // removeit.parentNode.removeChild(removeit)
+            }
+
+
+        })
+
+
+        </script>
+</html>

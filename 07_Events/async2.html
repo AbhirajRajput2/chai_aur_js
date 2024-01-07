@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Chai aur js</h1>
+
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+    <script>
+      let task=(str)=>{
+        console.log(str)
+      }
+
+      let intervalid=setInterval(task,1000,"Abhiraj")
+      clearInterval(intervalid)
+
+    </script>
+</body>
+</html>

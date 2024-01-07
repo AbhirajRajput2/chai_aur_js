@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Background will change color soon baby...!</h1>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+
+    <script>
+        let body=document.querySelector('body')
+        let start=document.querySelector('#start')
+        let stopp=document.querySelector("#stop")
+        let intervalid;
+        let randomcolor=()=>{
+            let random=Math.floor(Math.random()*255)
+            return random
+        }
+        let colorgenerate=()=>{
+            let color=`rgb(${randomcolor()},${randomcolor()},${randomcolor()}`
+            return color
+        }
+
+        let generatecolor=()=>{
+            body.style.backgroundColor=colorgenerate()
+        }
+        
+        let make=()=>{
+      if(!intervalid){
+        intervalid= setInterval(generatecolor,1000)
+      }
+        }
+        let made=()=>{
+            clearInterval(intervalid)
+            intervalid=null
+        }
+
+        start.addEventListener('click',make)
+        stopp.addEventListener('click',made)
+    </script>
+</body>
+</html>

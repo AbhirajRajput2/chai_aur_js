@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+<body>
+    
+    <h1>Chai aur Javascript</h1>
+
+    <button id="stop">stop</button>
+
+    <script>
+        // setTimeout(() => {
+        //     console.log("Abhiraj");
+        // }, 2000);
+
+
+        //or you can also give variable reference
+
+        // let task=()=>{
+        //     console.log("Abhiraj");
+        // }
+
+        // setTimeout(task, 2000);
+
+
+        //If you wanna to stop it use "Cleartimeout" , let add cleartimeout with stop button and see what happens
+        let button=document.querySelector('#stop')
+        
+        
+        let task=()=>{
+            console.log("Abhiraj");
+        }
+
+        let taskref=setTimeout(task, 2000);
+       
+        button.addEventListener('click',()=>{
+            clearTimeout(taskref)
+        })
+        
+        </script>
+</body>
+</html>
